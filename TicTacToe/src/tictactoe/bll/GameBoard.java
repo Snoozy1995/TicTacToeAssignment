@@ -37,7 +37,7 @@ public class GameBoard implements IGameModel {
      * @return int Id of the next player.
      */
     public int getNextPlayer(){
-        return playerNext?0:1;
+        return playerNext?1:0;
     }
 
     /**
