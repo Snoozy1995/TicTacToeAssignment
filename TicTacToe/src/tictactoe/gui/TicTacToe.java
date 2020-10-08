@@ -17,26 +17,16 @@ import javafx.stage.Stage;
  */
 public class TicTacToe extends Application
 {
-    
     @Override
-    public void start(Stage stage) throws Exception
-    {
-     
-        
-        Parent root = FXMLLoader.load(getClass().getResource("views/TicTacView.fxml"));
-        
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("views/GameSelectView.fxml"));
         Scene scene = new Scene(root);
-        
-        
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Tic Tac Toe");
         stage.centerOnScreen();
-        
-        
         stage.show();
     }
-
     /**
      * @param args the command line arguments
      */
