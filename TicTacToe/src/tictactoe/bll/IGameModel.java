@@ -32,6 +32,22 @@ public interface IGameModel
     public boolean play(int col, int row);
 
     /**
+     * Attempts to retrieve an available play for the computer in singleplayer.
+     * Retrieves a possible next play in a array integer following the format: column,row.
+     * Returns {-1,-1} if nothing else is available otherwise it will get a column or row and return that.
+     */
+    public int[] getNextPlay();
+
+
+    /**
+     *
+     * Attempts to check the playFields variable if the index is played already or not.
+     *
+     * @return true if available or false if not.
+     */
+    public boolean tryPlayField(int index);
+
+    /**
      * Tells us if the game has ended either by draw or by meeting the winning
      * condition.
      *

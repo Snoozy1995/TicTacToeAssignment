@@ -5,6 +5,10 @@
  */
 package tictactoe.bll;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  *
  * @author @todo
@@ -13,7 +17,6 @@ public class GameBoard implements IGameModel {
     private boolean playerNext=false;
     int playFields[]={-1,-1,-1,-1,-1,-1,-1,-1,-1};
     int magicSquare[]={8,1,6,3,5,7,4,9,2}; //https://mathworld.wolfram.com/MagicSquare.html
-
     public boolean checkMagicSquare(){
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++){
@@ -51,8 +54,8 @@ public class GameBoard implements IGameModel {
      * this method will always return false.
      */
     public boolean play(int col, int row){
-        int index=((col+1)+(row*3))-1;
-        System.out.println("col:"+col+"   row:"+row+"    index"+index);
+        int index=((col)+(row*3));
+        System.out.println("play index:" +index);
         if(playFields[index]!=-1||isGameOver()) return false;
         playFields[index]=getNextPlayer();
         playerNext=!playerNext;
@@ -110,4 +113,41 @@ public class GameBoard implements IGameModel {
         }
     }
 
+    /**
+     * Retrieves a possible next play in a array integer following the format: column,row.
+     * Returns {-1,-1} if nothing else is available otherwise it will get a column or row and return that.
+     */
+    public int[] getNextPlay() {
+        List<Integer> available=new ArrayList<Integer>();
+        //Retrieve available indexes
+        int cr[]={-1,-1};
+        for(int i=0;i<9;i++){
+            if(tryPlayField(i)){ available.add(i); }
+        }
+        System.out.println("Address:" +available);
+        if(available.size()==0) return cr;
+        Random random = new Random();
+        int index = available.get(random.nextInt(available.size()));
+        int col=index,row=0;
+        //Index to column/row
+        if(index>2&&index<6){
+            row=1;
+            col=index-3;
+        }else if(index>5){
+            row=2;
+            col=index-6;
+        }
+        cr[0]=col;
+        cr[1]=row;
+        return cr;
+    }
+
+    /**
+    * Attempts to check the playFields variable if the index is played already or not.
+    * True if it is available to be played, otherwise false.
+    */
+    public boolean tryPlayField(int index){
+        if(playFields[index]==-1) return true;
+        return false;
+    }
 }
