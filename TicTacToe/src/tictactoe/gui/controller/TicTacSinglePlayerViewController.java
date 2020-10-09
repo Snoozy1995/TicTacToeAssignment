@@ -20,8 +20,6 @@ import tictactoe.bll.GameBoard;
 import tictactoe.bll.IGameModel;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**
