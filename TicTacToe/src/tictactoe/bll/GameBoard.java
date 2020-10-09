@@ -55,7 +55,6 @@ public class GameBoard implements IGameModel {
      */
     public boolean play(int col, int row){
         int index=((col)+(row*3));
-        System.out.println("play index:" +index);
         if(playFields[index]!=-1||isGameOver()) return false;
         playFields[index]=getNextPlayer();
         playerNext=!playerNext;
@@ -63,18 +62,12 @@ public class GameBoard implements IGameModel {
     }
 
     public boolean isGameOver(){
-        if(checkMagicSquare()){
-            System.out.println("magicsquarechecktrue");
-            return true;
-        }
+        if(checkMagicSquare()) return true;
         int playCount=0;
         for(int i=0;i<9;i++){
             if(playFields[i]!=-1) playCount++;
         }
-        if(playCount==9){
-            System.out.println("playcountcheck");
-            return true;
-        }
+        if(playCount==9) return true;
         return false;
     }
 
@@ -124,7 +117,6 @@ public class GameBoard implements IGameModel {
         for(int i=0;i<9;i++){
             if(tryPlayField(i)){ available.add(i); }
         }
-        System.out.println("Address:" +available);
         if(available.size()==0) return cr;
         Random random = new Random();
         int index = available.get(random.nextInt(available.size()));

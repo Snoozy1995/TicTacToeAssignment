@@ -22,7 +22,6 @@ import tictactoe.bll.IGameModel;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
@@ -59,7 +58,6 @@ public class TicTacSinglePlayerViewController implements Initializable
                     displayWinner(game.getWinner());
                 }else{
                     int cr[]=game.getNextPlay();
-                    System.out.println("Computer play c:"+cr[0]+" r:"+cr[1]);
                     if (game.play(cr[0],cr[1]))
                     {
                         Button btncpu = (Button) gridPane.lookup("#btn"+((cr[0])+(cr[1]*3)+1));
@@ -76,17 +74,8 @@ public class TicTacSinglePlayerViewController implements Initializable
         }
     }
 
-    private List<Integer> getAvailablePlays() {
-        List<Integer> available=new ArrayList<Integer>();
-        for(int i=0;i<9;i++){
-            if(!game.tryPlayField(i)){ available.add(i); }
-        }
-        return available;
-    }
-
     @FXML
-    private void handleNewGame(ActionEvent event)
-    {
+    private void handleNewGame(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/GameSelectView.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
