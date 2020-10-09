@@ -54,7 +54,7 @@ public class TicTacSinglePlayerViewController implements Initializable
                 setPlayer();
                 if (game.isGameOver()){
                     displayWinner(game.getWinner());
-                }else{
+                }else{ //code starts
                     int cr[]=game.getNextPlay();
                     if (game.play(cr[0],cr[1]))
                     {

@@ -15,8 +15,8 @@ import java.util.Random;
  */
 public class GameBoard implements IGameModel {
     private boolean playerNext=false;
-    int playFields[]={-1,-1,-1,-1,-1,-1,-1,-1,-1};
-    int magicSquare[]={8,1,6,3,5,7,4,9,2}; //https://mathworld.wolfram.com/MagicSquare.html
+    private int playFields[]={-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    private int magicSquare[]={8,1,6,3,5,7,4,9,2}; //https://mathworld.wolfram.com/MagicSquare.html
     public boolean checkMagicSquare(){
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++){
